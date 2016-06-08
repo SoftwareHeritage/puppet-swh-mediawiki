@@ -2,7 +2,7 @@ define mediawiki::instance (
   String $vhost_name = $title,
   String $vhost_docroot = '/var/lib/mediawiki',
   String $vhost_fpm_root = 'http://127.0.0.1:5000',
-  String $vhost_basic_auth = undef,
+  String $vhost_basic_auth = '',
   Array[String] $vhost_aliases = [],
   String $vhost_ssl_protocol = 'all -SSLv2 -SSLv3',
   String $vhost_ssl_honorcipherorder = 'On',
