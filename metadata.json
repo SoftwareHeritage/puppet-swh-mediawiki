@@ -1,0 +1,14 @@
+{
+  "name": "swh-mediawiki",
+  "version": "0.1.0",
+  "author": "swh",
+  "summary": "Multi-instance MediaWiki installation for Software Heritage",
+  "license": "Apache 2.0",
+  "source": "https://forge.softwareheritage.org/diffusion/SPMW/",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
