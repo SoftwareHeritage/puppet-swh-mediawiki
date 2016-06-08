@@ -1,6 +1,6 @@
     case "<%= @vhost_name %>":
-<% @vhost_aliases.each do |alias| -%>
-    case "<%= alias %>":
+<% @vhost_aliases.each do |vhost_alias| -%>
+    case "<%= vhost_alias %>":
 <% end -%>
 
 		  require_once "<%= @config_relative %>";
