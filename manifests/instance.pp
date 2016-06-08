@@ -19,9 +19,11 @@ define mediawiki::instance (
   String $upgrade_key = 'upgradekey',
   String $vhost_name = $title,
   ){
-    $vhost_basic_auth_file = "/etc/apache2/mediawiki_${vhost_name}http_auth"
-    $config = "/etc/mediawiki/LocalSettings_${vhost_name}.php"
+    include ::mediawiki
 
+    $vhost_basic_auth_file = "/etc/apache2/mediawiki_${vhost_name}http_auth"
+    $config_relative = "LocalSettings_${vhost_name}.php"
+    $config = "/etc/mediawiki/${config_relative}"
 
     include ::mysql::client
 
@@ -125,5 +127,14 @@ define mediawiki::instance (
     mode    => '0640',
     content => template('mediawiki/LocalSettings_vhost.php.erb'),
     notify  => Service['php5-fpm'],
+  }
+
+  # Uses variables:
+    # $vhost_name
+    # $vhost_aliases
+  concat::fragment {"mediawiki_config_meta_${vhost_name}":
+    target  => $::mediawiki::config_meta,
+    order   => '10',
+    content => template('mediawiki/LocalSettings.php.erb')
   }
 }

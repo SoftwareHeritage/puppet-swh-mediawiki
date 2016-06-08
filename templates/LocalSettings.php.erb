@@ -1,12 +1,7 @@
-<?php
-# This file is managed by puppet. Local modifications will be overwritten.
+    case "<%= @vhost_name %>":
+<% @vhost_aliases.each do |alias| -%>
+    case "<%= alias %>":
+<% end -%>
 
-	switch ( $_SERVER["SERVER_NAME"] ) {
-		case "intranet.softwareheritage.org":
-			require_once "LocalSettings_intranet.softwareheritage.org.php";
+		  require_once "<%= @config_relative %>";
 			break;
- 
-		default:
-			echo "This wiki is not available. Check server configuration.";
-			exit( 0 );
-	}

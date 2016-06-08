@@ -1,0 +1,5 @@
+ 
+		default:
+			echo "This wiki is not available. Check server configuration.";
+			exit( 0 );
+	}

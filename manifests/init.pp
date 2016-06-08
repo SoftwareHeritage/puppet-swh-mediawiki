@@ -45,4 +45,24 @@ class mediawiki {
   package {$packages:
     ensure => latest,
   }
+
+  $config_meta = '/etc/mediawiki/LocalSettings.php'
+  concat {$config_meta:
+    ensure  => present,
+    owner   => 'root',
+    group   => 'www-data',
+    mode    => '0640',
+    require => Package['mediawiki'],
+  }
+
+  concat::fragment {'mediawiki_config_meta_header':
+    target => $config_meta,
+    source => 'puppet:///modules/mediawiki/config_meta_header',
+    order  => '00',
+  }
+  concat::fragment {'mediawiki_config_meta_footer':
+    target => $config_meta,
+    source => 'puppet:///modules/mediawiki/config_meta_footer',
+    order  => '99',
+  }
 }
