@@ -54,14 +54,14 @@ define mediawiki::instance (
       mode    => '0640',
       content => $vhost_basic_auth,
     }
-    $root_directory = [{
+    $root_directory = {
       path           => '/',
       provider       => 'location',
       auth_type      => 'Basic',
       auth_name      => 'Software Heritage development',
       auth_user_file => $vhost_basic_auth_file,
       auth_require   => 'valid-user',
-    }]
+    }
   }
   else {
     file {$vhost_basic_auth_file:
