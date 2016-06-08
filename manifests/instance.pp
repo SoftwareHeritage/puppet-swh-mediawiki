@@ -46,7 +46,7 @@ define mediawiki::instance (
     redirect_dest   => "https://${vhost_name}/",
   }
 
-  if $vhost_basic_auth {
+  if $vhost_basic_auth != '' {
     file {$vhost_basic_auth_file:
       ensure  => present,
       owner   => 'root',
