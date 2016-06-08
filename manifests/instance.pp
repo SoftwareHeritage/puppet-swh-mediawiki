@@ -1,4 +1,8 @@
 define mediawiki::instance (
+  String $vhost_name = $title,
+  String $vhost_docroot = '/var/lib/mediawiki',
+  String $vhost_fpm_root = 'http://127.0.0.1:5000',
+  String $vhost_basic_auth = undef,
   Array[String] $vhost_aliases = [],
   String $vhost_ssl_protocol = 'all -SSLv2 -SSLv3',
   String $vhost_ssl_honorcipherorder = 'On',
@@ -6,18 +10,13 @@ define mediawiki::instance (
   String $vhost_ssl_cert = '/etc/ssl/certs/ssl-cert-snakeoil.pem',
   String $vhost_ssl_ca = '/etc/ssl/certs/ssl-cert-snakeoil.pem',
   String $vhost_ssl_key = '/etc/ssl/private/ssl-cert-snakeoil.key',
-  String $vhost_ssl_hsts_header =
-    'add Strict-Transport-Security "max-age=15768000"',
-  String $vhost_docroot = '/var/lib/mediawiki',
-  String $vhost_fpm_root = 'http://127.0.0.1:5000',
-  String $vhost_basic_auth = undef,
+  String $vhost_ssl_hsts_header = 'add Strict-Transport-Security "max-age=15768000"',
   String $db_user = 'mediawiki',
   String $db_basename = 'mediawiki',
   String $db_host = 'localhost',
   String $db_password = 'verysecret',
   String $secret_key = 'secretkey',
   String $upgrade_key = 'upgradekey',
-  String $vhost_name = $title,
   ){
     include ::mediawiki
 
