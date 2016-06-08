@@ -36,6 +36,13 @@
 # Copyright 2016 Your name here, unless otherwise noted.
 #
 class mediawiki {
+  $packages = [
+    'mediawiki',
+    'mediawiki-extensions',
+    'imagemagick',
+  ]
 
-
+  package {$packages:
+    ensure => latest,
+  }
 }
