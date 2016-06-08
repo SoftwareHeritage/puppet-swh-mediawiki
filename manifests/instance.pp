@@ -20,7 +20,7 @@ define mediawiki::instance (
   ){
     include ::mediawiki
 
-    $vhost_basic_auth_file = "/etc/apache2/mediawiki_${vhost_name}http_auth"
+    $vhost_basic_auth_file = "/etc/apache2/mediawiki_${vhost_name}_http_auth"
     $config_relative = "LocalSettings_${vhost_name}.php"
     $config = "/etc/mediawiki/${config_relative}"
 
