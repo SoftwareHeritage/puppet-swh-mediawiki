@@ -17,7 +17,7 @@ define mediawiki::instance (
   String $db_password = 'verysecret',
   String $secret_key = 'secretkey',
   String $upgrade_key = 'upgradekey',
-  String $swh_logo = '/images/b/b2/swh-intranet-logo.png',
+  String $swh_logo = '/images/b/b2/Swh-logo.png',
   ){
     include ::mediawiki
 
