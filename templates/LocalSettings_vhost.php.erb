@@ -134,6 +134,20 @@ if (is_file("/etc/mediawiki-extensions/extensions.php")) {
 $wgResourceLoaderMaxQueryLength = -1;
 
 
+# Anti-SPAM Q&A
+$wgCaptchaQuestions[] = array( 'question' => "The name of this project is Software [BLANK] (fill the blank)",
+                               'answer'   => "heritage" );
+$wgCaptchaQuestions[] = array( 'question' => "The name of this project is [BLANK] Heritage (fill the blank)",
+                               'answer'   => "software" );
+$wgCaptchaQuestions[] = array( 'question' => "What do we collect, preserve, and share?",
+                               'answer'   => array( "software", "source code", "software source code" ) );
+$wgCaptchaQuestions[] = array( 'question' => "17 + 25 ?",
+                               'answer' => "42" );
+$wgCaptchaQuestions[] = array( 'question' => "18 - 1 ?",
+                               'answer' => "17" );
+$wgCaptchaQuestions[] = array( 'question' => "22 + 1 ?",
+                               'answer' => "23" );
+
 
 # End of automatically generated settings.
 # Add more configuration options below.
