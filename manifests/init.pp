@@ -43,7 +43,7 @@ class mediawiki {
   ]
 
   package {$packages:
-    ensure => latest,
+    ensure => installed,
   }
 
   $config_meta = '/etc/mediawiki/LocalSettings.php'
