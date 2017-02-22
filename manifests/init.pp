@@ -42,9 +42,20 @@ class mediawiki {
     'imagemagick',
   ]
 
-  # package {$packages:
-  #   ensure => installed,
-  # }
+  package {$packages:
+    ensure => installed,
+  }
+
+  apt::pin {'mediawiki':
+    packages => ['mediawiki'],
+    priority => 1001,
+    version  => '1:1.19.20+dfsg-2.3',
+  }
+  apt::pin {'mediawiki-extensions':
+    packages => ['mediawiki-extensions'],
+    priority => 1001,
+    version  => '3.7',
+  }
 
   $config_meta = '/etc/mediawiki/LocalSettings.php'
   concat {$config_meta:
