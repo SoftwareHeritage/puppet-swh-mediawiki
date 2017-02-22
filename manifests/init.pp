@@ -42,9 +42,9 @@ class mediawiki {
     'imagemagick',
   ]
 
-  package {$packages:
-    ensure => installed,
-  }
+  # package {$packages:
+  #   ensure => installed,
+  # }
 
   $config_meta = '/etc/mediawiki/LocalSettings.php'
   concat {$config_meta:
