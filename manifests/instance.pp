@@ -126,7 +126,6 @@ define mediawiki::instance (
     group   => 'www-data',
     mode    => '0640',
     content => template('mediawiki/LocalSettings_vhost.php.erb'),
-    notify  => Service['php5-fpm'],
   }
 
   # Uses variables:
