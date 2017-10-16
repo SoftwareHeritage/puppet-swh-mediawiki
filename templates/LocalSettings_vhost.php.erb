@@ -20,7 +20,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ## Uncomment this to disable output compression
 # $wgDisableOutputCompression = true;
 
-$wgSitename      = "SoftwareHeritage";
+$wgSitename      = "<%= @swh_sitename %>";
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
@@ -122,38 +122,36 @@ $wgRightsIcon = "https://licensebuttons.net/l/by-sa/4.0/88x31.png";
 # Path to the GNU diff3 utility. Used for conflict resolution.
 $wgDiff3 = "/usr/bin/diff3";
 
-# debian-specific include:
-if (is_file("/etc/mediawiki-extensions/extensions.php")) {
-	include("/etc/mediawiki-extensions/extensions.php");
-}
-
 # Query string length limit for ResourceLoader. You should only set this if
 # your web server has a query string length limit (then set it to that limit),
 # or if you have suhosin.get.max_value_length set in php.ini (then set it to
 # that value)
 $wgResourceLoaderMaxQueryLength = -1;
 
+# Skins
+wfLoadSkin( 'CologneBlue' );
+wfLoadSkin( 'Modern' );
+wfLoadSkin( 'MonoBook' );
+wfLoadSkin( 'Vector' );
+
 
 # Anti-SPAM Q&A
-$wgCaptchaQuestions[] = array( 'question' => "The name of this project is Software [BLANK] (fill the blank)",
-                               'answer'   => "heritage" );
-$wgCaptchaQuestions[] = array( 'question' => "The name of this project is [BLANK] Heritage (fill the blank)",
-                               'answer'   => "software" );
-$wgCaptchaQuestions[] = array( 'question' => "What do we collect, preserve, and share?",
-                               'answer'   => array( "software", "source code", "software source code" ) );
-$wgCaptchaQuestions[] = array( 'question' => "Our headquarters are located in the capital of France, which is ...?",
-                               'answer' => "paris" );
-$wgCaptchaQuestions[] = array( 'question' => "Name a popular GNU/Linux distribution",
-                               'answer' => array( "arch", "centos", "debian", "fedora", "gentoo", "mageia",
-                                                  "mandriva", "mint", "opensuse", "red hat", "redhat", "slackware",
-                                                  "suse", "ubuntu" ) );
-$wgCaptchaQuestions[] = array( 'question' => "Name a popular programming language",
-                               'answer' => array( "ada", "assembly", "c", "c#", "c++", "erlang", "f#", "fortran",
-                                                  "go", "haskell", "java", "javascript", "lisp", "logo", "lua", "ml",
-                                                  "objective c", "objective-c", "ocaml", "pascal", "perl", "php",
-                                                  "prolog", "python", "ruby", "rust", "scala", "scheme", "shell",
-                                                  "swift", "visual basic" ) );
+wfLoadExtensions([ 'ConfirmEdit', 'ConfirmEdit/QuestyCaptcha' ]);
 
+$wgCaptchaQuestions = [
+  "The name of this project is Software [BLANK] (fill the blank)" => "heritage",
+  "The name of this project is [BLANK] Heritage (fill the blank)" => "software",
+  "What do we collect, preserve, and share?" => ["software", "source code", "software source code"],
+  "Our headquarters are located in the capital of France, which is ...?" => "paris",
+  "Name a popular GNU/Linux distribution" => ["arch", "centos", "debian", "fedora", "gentoo", "mageia",
+                                              "mandriva", "mint", "opensuse", "red hat", "redhat", "slackware",
+                                              "suse", "ubuntu"],
+  "Name a popular programming language" => ["ada", "assembly", "c", "c#", "c++", "erlang", "f#", "fortran",
+                                            "go", "haskell", "java", "javascript", "lisp", "logo", "lua", "ml",
+                                            "objective c", "objective-c", "ocaml", "pascal", "perl", "php",
+                                            "prolog", "python", "ruby", "rust", "scala", "scheme", "shell",
+                                            "swift", "visual basic"],
+];
 
 # End of automatically generated settings.
 # Add more configuration options below.
