@@ -18,6 +18,7 @@ define mediawiki::instance (
   String $secret_key = 'secretkey',
   String $upgrade_key = 'upgradekey',
   String $swh_logo = '/images/b/b2/Swh-logo.png',
+  String $site_name = 'MediaWiki',
   ){
     include ::mediawiki
 
@@ -120,6 +121,7 @@ define mediawiki::instance (
     # $db_password
     # $secret_key
     # $upgrade_key
+    # $site_name
   file {$config:
     ensure  => present,
     owner   => 'root',
