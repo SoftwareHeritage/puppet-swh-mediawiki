@@ -89,6 +89,10 @@ define mediawiki::instance (
       { path => '^/(.*\.php(/.*)?)$',
         url  => "fcgi://${vhost_fpm_root}${vhost_docroot}/\$1",
       },
+      { path         => '^/wiki/',
+        url          => "fcgi://${vhost_fpm_root}${vhost_docroot}/index.php",
+        reverse_urls => [],
+      },
     ],
     directories          => [
       $root_directory,
