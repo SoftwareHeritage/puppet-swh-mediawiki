@@ -161,6 +161,10 @@ $wgGroupPermissions['*']['edit'] = false;
 
 $wgFileExtensions[] = 'pdf';
 
+# Add SVG support
+$wgFileExtensions[] = 'svg';
+$wgSVGConverter = 'rsvg';
+
 $wgNamespacesToBeSearchedDefault = array(
 	NS_MAIN =>           true,
 	NS_TALK =>           true,

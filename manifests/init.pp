@@ -39,6 +39,7 @@ class mediawiki {
   $packages = [
     'mediawiki',
     'imagemagick',
+    'librsvg2-bin',
   ]
 
   package {$packages:
