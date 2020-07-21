@@ -117,6 +117,8 @@ define mediawiki::instance (
     ],
   }
 
+  File[$vhost_ssl_cert, $vhost_ssl_chain, $vhost_ssl_key] ~> Class['Apache::Service']
+
   # Uses variables:
     # $vhost_name
     # $db_basename
