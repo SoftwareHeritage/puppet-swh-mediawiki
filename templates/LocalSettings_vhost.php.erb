@@ -156,6 +156,8 @@ $wgCaptchaQuestions = [
 # Add more configuration options below.
 
 $wgGroupPermissions['*']['edit'] = false;
+$wgGroupPermissions['*']['createaccount'] = false;
+$wgGroupPermissions['sysop']['createaccount'] = true;
 
 $wgFileExtensions[] = 'pdf';
 $wgFileExtensions[] = 'odt';
