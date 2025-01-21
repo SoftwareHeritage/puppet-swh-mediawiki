@@ -42,7 +42,7 @@ define mediawiki::instance (
   ::apache::vhost {"${vhost_name}_non-ssl":
     servername      => $vhost_name,
     serveraliases   => $vhost_aliases,
-    port            => '80',
+    port            => 80,
     docroot         => $vhost_docroot,
     redirect_status => 'permanent',
     redirect_dest   => "https://${vhost_name}/",
@@ -75,7 +75,7 @@ define mediawiki::instance (
   ::apache::vhost {"${vhost_name}_ssl":
     servername           => $vhost_name,
     serveraliases        => $vhost_aliases,
-    port                 => '443',
+    port                 => 443,
     ssl                  => true,
     ssl_protocol         => $vhost_ssl_protocol,
     ssl_honorcipherorder => $vhost_ssl_honorcipherorder,
